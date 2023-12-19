@@ -104,6 +104,7 @@ const Codepage = () => {
                 size="icon"
                 disabled={isLoading}
                 type="submit"
+                variant="default"
               >
                 Generate
               </Button>

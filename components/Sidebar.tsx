@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import FreeCounter from "./FreeCounter";
 import { cn } from "@/lib/utils";
 import { Jost } from "next/font/google";
 import { usePathname } from "next/navigation";
@@ -61,7 +62,11 @@ const routes = [
   },
 ];
 
-const Sidebar = () => {
+interface SidebarProps {
+  apiUsageCount: number;
+}
+
+const Sidebar = ({ apiUsageCount = 0 }: SidebarProps) => {
   const pathname = usePathname();
 
   return (
@@ -101,6 +106,7 @@ const Sidebar = () => {
           ))}
         </div>
       </div>
+      <FreeCounter apiUsageCount={apiUsageCount} />
     </div>
   );
 };
