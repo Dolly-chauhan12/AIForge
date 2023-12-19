@@ -2,6 +2,7 @@ import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import { OpenAI } from "openai";
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
+import { checkApiLimit, increaseApiUsageCount } from "@/lib/api-limit";
 
 const instructionMessage: ChatCompletionMessageParam = {
   role: "system",
@@ -33,10 +34,18 @@ export async function POST(req: Request) {
       return new NextResponse("Messages are required", { status: 400 });
     }
 
+    const freeTrial = await checkApiLimit();
+
+    if (!freeTrial) {
+      return new NextResponse("Your usage limit is exhausted", { status: 403 });
+    }
+
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [instructionMessage, ...messages],
     });
+
+    await increaseApiUsageCount();
 
     return NextResponse.json(response.choices[0].message);
   } catch (error) {
