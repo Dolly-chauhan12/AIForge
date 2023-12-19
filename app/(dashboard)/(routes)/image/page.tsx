@@ -7,6 +7,7 @@ import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useProModal } from "@/hooks/use-pro-modal";
 import Heading from "@/components/Heading";
 import Empty from "@/components/Empty";
 import Loader from "@/components/Loader";
@@ -32,6 +33,7 @@ import { Download, ImageIcon } from "lucide-react";
 
 const Imagepage = () => {
   const router = useRouter();
+  const proModal = useProModal();
   const [photos, setPhotos] = useState<string[]>([]);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -57,7 +59,9 @@ const Imagepage = () => {
 
       form.reset();
     } catch (error: any) {
-      //TODO : Pro Modal popup
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      }
       console.log(error);
     } finally {
       router.refresh();

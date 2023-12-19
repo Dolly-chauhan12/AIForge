@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useProModal } from "@/hooks/use-pro-modal";
 import { Card, CardContent } from "./ui/card";
 import { Progress } from "./ui/progress";
-
 import { MAX_FREE_COUNTS } from "@/constants";
 import { Button } from "./ui/button";
 import { Sparkles } from "lucide-react";
@@ -13,6 +13,8 @@ interface FreeCounterProps {
 
 const FreeCounter = ({ apiUsageCount = 0 }: FreeCounterProps) => {
   const [mounted, setMounted] = useState(false);
+  const proModal = useProModal();
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -32,7 +34,11 @@ const FreeCounter = ({ apiUsageCount = 0 }: FreeCounterProps) => {
               value={(apiUsageCount / MAX_FREE_COUNTS) * 100}
             />
           </div>
-          <Button className="w-full" variant="premium">
+          <Button
+            className="w-full"
+            variant="premium"
+            onClick={proModal.onOpen}
+          >
             Upgrade <Sparkles className="w-4 h-4 ml-2 fill-white " />
           </Button>
         </CardContent>

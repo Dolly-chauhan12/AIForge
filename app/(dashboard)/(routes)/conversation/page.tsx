@@ -6,6 +6,7 @@ import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useProModal } from "@/hooks/use-pro-modal";
 import { formSchema } from "./constants";
 import { Button } from "@/components/ui/button";
 import Empty from "@/components/Empty";
@@ -34,6 +35,7 @@ import { cn } from "@/lib/utils";
 
 const Conversationpage = () => {
   const router = useRouter();
+  const proModal = useProModal();
   const [messages, setMessages] = useState<
     OpenAI.Chat.ChatCompletionMessageParam[]
   >([]);
@@ -62,7 +64,9 @@ const Conversationpage = () => {
 
       form.reset();
     } catch (error: any) {
-      //TODE : Pro Modal popup
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      }
       console.log(error);
     } finally {
       router.refresh();
