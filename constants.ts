@@ -1,6 +1,7 @@
 import { MessageCircle, ImageIcon, Video, Code2, Music4 } from "lucide-react";
-export const MAX_FREE_COUNTS = 5;
 
+export const MAX_FREE_COUNTS = 5;
+export const DAY_IN_MS = 86_400_000;
 export const tools = [
   {
     label: "Conversation",

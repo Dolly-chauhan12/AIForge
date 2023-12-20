@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useProModal } from "@/hooks/use-pro-modal";
 import {
   Dialog,
@@ -16,9 +17,24 @@ import { Card } from "./ui/card";
 import { cn } from "@/lib/utils";
 import { CheckCircle, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
+import axios from "axios";
 
 const ProModal = () => {
   const proModal = useProModal();
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const onSubscribe = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get("/api/payment");
+
+      window.location.href = await response.data.url;
+    } catch (error) {
+      console.log("STRIPE_CLIENT_ERROR", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Dialog open={proModal.isOpen} onOpenChange={proModal.onClose}>
@@ -48,7 +64,12 @@ const ProModal = () => {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button size="lg" variant="premium" className="w-full">
+          <Button
+            onClick={onSubscribe}
+            size="lg"
+            variant="premium"
+            className="w-full"
+          >
             Upgrade
             <Sparkles className="w-4 h-4 fill-white ml-2" />
           </Button>
