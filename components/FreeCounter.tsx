@@ -9,9 +9,13 @@ import { Sparkles } from "lucide-react";
 
 interface FreeCounterProps {
   apiUsageCount: number;
+  isPro: boolean;
 }
 
-const FreeCounter = ({ apiUsageCount = 0 }: FreeCounterProps) => {
+const FreeCounter = ({
+  apiUsageCount = 0,
+  isPro = false,
+}: FreeCounterProps) => {
   const [mounted, setMounted] = useState(false);
   const proModal = useProModal();
 
@@ -20,6 +24,8 @@ const FreeCounter = ({ apiUsageCount = 0 }: FreeCounterProps) => {
   }, []);
 
   if (!mounted) return null;
+
+  if (isPro) return null;
 
   return (
     <div className="px-3">

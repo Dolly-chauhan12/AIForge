@@ -2,6 +2,7 @@ import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import { OpenAI } from "openai";
 import { checkApiLimit, increaseApiUsageCount } from "@/lib/api-limit";
+import { checkProSubscription } from "@/lib/subscription";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -24,8 +25,9 @@ export async function POST(req: Request) {
     // check for userapirequests
 
     const freeTrial = await checkApiLimit();
+    const isPro = checkProSubscription();
 
-    if (!freeTrial) {
+    if (!freeTrial && !isPro) {
       return new NextResponse("Your usage limit is exhausted", { status: 403 });
     }
 
@@ -34,7 +36,9 @@ export async function POST(req: Request) {
       messages,
     });
 
-    await increaseApiUsageCount();
+    if (!isPro) {
+      await increaseApiUsageCount();
+    }
 
     return NextResponse.json(response.choices[0].message);
   } catch (error) {

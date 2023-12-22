@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { OpenAI } from "openai";
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 import { checkApiLimit, increaseApiUsageCount } from "@/lib/api-limit";
+import { checkProSubscription } from "@/lib/subscription";
 
 const instructionMessage: ChatCompletionMessageParam = {
   role: "system",
@@ -35,8 +36,9 @@ export async function POST(req: Request) {
     }
 
     const freeTrial = await checkApiLimit();
+    const isPro = checkProSubscription();
 
-    if (!freeTrial) {
+    if (!freeTrial && !isPro) {
       return new NextResponse("Your usage limit is exhausted", { status: 403 });
     }
 
@@ -45,7 +47,9 @@ export async function POST(req: Request) {
       messages: [instructionMessage, ...messages],
     });
 
-    await increaseApiUsageCount();
+    if (!isPro) {
+      await increaseApiUsageCount();
+    }
 
     return NextResponse.json(response.choices[0].message);
   } catch (error) {
