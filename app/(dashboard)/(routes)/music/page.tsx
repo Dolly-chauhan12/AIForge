@@ -21,6 +21,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Music4 } from "lucide-react";
+import { toast } from "sonner";
 
 const Musicpage = () => {
   const router = useRouter();
@@ -48,6 +49,8 @@ const Musicpage = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      } else {
+        toast.error("Something went wrong. Please try again");
       }
       console.log(error);
     } finally {

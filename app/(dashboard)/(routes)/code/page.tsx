@@ -27,6 +27,7 @@ import ReactMarkdown from "react-markdown";
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 import OpenAI from "openai";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 const Codepage = () => {
   const router = useRouter();
@@ -62,6 +63,8 @@ const Codepage = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      } else {
+        toast.error("Something went wrong. Please try again");
       }
       console.log(error);
     } finally {

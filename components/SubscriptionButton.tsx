@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Sparkles } from "lucide-react";
 
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 export const Subscriptionbutton = ({ isPro = false }: { isPro: boolean }) => {
   const [loading, setLoading] = useState(false);
@@ -17,6 +18,7 @@ export const Subscriptionbutton = ({ isPro = false }: { isPro: boolean }) => {
 
       window.location.href = response.data.url;
     } catch (error) {
+      toast.error("Something went wrong. Please try again");
       console.log("Something went wrong");
     } finally {
       setLoading(false);

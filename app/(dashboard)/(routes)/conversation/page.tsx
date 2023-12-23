@@ -16,14 +16,12 @@ import UserAvatar from "@/components/UserAvatar";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
+import { toast } from "sonner";
 import Heading from "@/components/Heading";
 import { MessageCircle } from "lucide-react";
 import {
@@ -66,6 +64,8 @@ const Conversationpage = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      } else {
+        toast.error("Something went wrong. Please try again");
       }
       console.log(error);
     } finally {

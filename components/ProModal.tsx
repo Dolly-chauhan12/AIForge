@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 import { CheckCircle, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 import axios from "axios";
+import { toast } from "sonner";
 
 const ProModal = () => {
   const proModal = useProModal();
@@ -31,6 +32,7 @@ const ProModal = () => {
       window.location.href = await response.data.url;
     } catch (error) {
       console.log("STRIPE_CLIENT_ERROR", error);
+      toast.error("Something went wrong.Please try again");
     } finally {
       setLoading(false);
     }
