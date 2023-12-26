@@ -74,8 +74,8 @@ const Sidebar = ({ apiUsageCount = 0, isPro = false }: SidebarProps) => {
     <div className="space-y-4 py-4 flex flex-col h-full text-white bg-[#111827]">
       <div className="px-3 py-2 flex-1">
         <Link href="/dashboard" className="flex items-center pl-3 mb-14">
-          <div className="relative w-8 h-8 mr-4">
-            <Image fill alt="Logo" src="/logo.jpeg" />
+          <div className="relative w-11 h-11 mr-4">
+            <Image fill alt="Logo" src="/logo.png" />
           </div>
           <h1
             className={cn(

@@ -15,11 +15,11 @@ export const LandingNavbar = () => {
   return (
     <nav className="p-4 bg-transparent flex items-center justify-between">
       <Link href="/" className="flex items-center">
-        <div className="relative h-8 w-8 mr-4">
-          <Image fill alt="logo" src="/logo.jpeg" />
+        <div className="relative h-10 w-10 mr-4">
+          <Image fill alt="logo" src="/logo.png" />
           <h1
             className={cn(
-              "text-2xl font-bold text-white ml-10",
+              "text-3xl font-bold text-white ml-12",
               JostFont.className
             )}
           >
