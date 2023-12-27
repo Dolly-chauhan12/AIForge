@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     }
 
     const freeTrial = await checkApiLimit();
-    const isPro = checkProSubscription();
+    const isPro = await checkProSubscription();
 
     if (!freeTrial && !isPro) {
       return new NextResponse("Your usage limit is exhausted", { status: 403 });
