@@ -84,7 +84,7 @@ const Imagepage = () => {
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className="rounded-lg
-            border w-full p-4 px-3 md:px-6
+            border border-blue-400/40 w-full p-4 px-3 md:px-6
             focus-within:shadow-sm
             grid grid-cols-12 gap-2 "
           >
@@ -94,7 +94,7 @@ const Imagepage = () => {
                 <FormItem className="col-span-12 lg:col-span-6">
                   <FormControl className="m-0 p-0">
                     <Input
-                      className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                      className="border-0 focus:outline-0 focus-visible:ring-0 focus-visible:ring-transparent focus-within:ring-0  bg-slate-200 dark:bg-gray-900"
                       placeholder="A white siamese cat"
                       disabled={isLoading}
                       {...field}
@@ -108,7 +108,7 @@ const Imagepage = () => {
               control={form.control}
               name="amount"
               render={({ field }) => (
-                <FormItem className="col-span-12 lg:col-span-2">
+                <FormItem className="col-span-12 lg:col-span-2 ">
                   <Select
                     disabled={isLoading}
                     onValueChange={field.onChange}
@@ -116,11 +116,11 @@ const Imagepage = () => {
                     value={field.value}
                   >
                     <FormControl>
-                      <SelectTrigger>
+                      <SelectTrigger className="bg-slate-200 dark:bg-gray-900 border-blue-400/40">
                         <SelectValue defaultValue={field.value} />
                       </SelectTrigger>
                     </FormControl>
-                    <SelectContent>
+                    <SelectContent className="bg-slate-200 dark:bg-gray-900">
                       {amountOptions.map((option) => (
                         <SelectItem key={option.value} value={option.value}>
                           {option.label}
@@ -144,11 +144,11 @@ const Imagepage = () => {
                     defaultValue={field.value}
                   >
                     <FormControl>
-                      <SelectTrigger>
+                      <SelectTrigger className="bg-slate-200 dark:bg-gray-900 border-blue-400/40">
                         <SelectValue defaultValue={field.value} />
                       </SelectTrigger>
                     </FormControl>
-                    <SelectContent>
+                    <SelectContent className="bg-slate-200 dark:bg-gray-900">
                       {resolutionOptions.map((option) => (
                         <SelectItem key={option.value} value={option.value}>
                           {option.label}
@@ -163,7 +163,7 @@ const Imagepage = () => {
             />
 
             <Button
-              className="col-span-12 lg:col-span-2 w-full"
+              className="col-span-12 lg:col-span-2 w-full bg-blue-700/90 hover:bg-blue-300 dark:bg-primary dark:hover:bg-gray-400"
               size="icon"
               disabled={isLoading}
               type="submit"
@@ -185,15 +185,17 @@ const Imagepage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
             {photos.map((src) => (
-              <Card className="rounded-lg overflow-hidden" key={src}>
+              <Card
+                className="rounded-lg overflow-hidden dark:bg-sky-800/40  "
+                key={src}
+              >
                 <div className="relative aspect-square">
                   <Image fill alt="generated" src={src} />
                 </div>
                 <CardFooter className="p-2">
                   <Button
                     onClick={() => window.open(src)}
-                    variant="secondary"
-                    className="w-full"
+                    className="w-full bg-blue-300 dark:bg-white"
                   >
                     <Download className="h-4 w-4 mr-2" /> Download
                   </Button>

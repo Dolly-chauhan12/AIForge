@@ -71,19 +71,14 @@ const Sidebar = ({ apiUsageCount = 0, isPro = false }: SidebarProps) => {
   const pathname = usePathname();
 
   return (
-    <div className="space-y-4 py-4 flex flex-col h-full text-white bg-[#111827]">
+    <div className="space-y-4 py-4 flex flex-col h-full border-r-[0.3px] border-black dark:bg-gray-900 dark:border-r-[0.3px] dark:border-r-gray-50">
       <div className="px-3 py-2 flex-1">
         <Link href="/dashboard" className="flex items-center pl-3 mb-14">
           <div className="relative w-11 h-11 mr-4">
             <Image fill alt="Logo" src="/logo.png" />
           </div>
-          <h1
-            className={cn(
-              "text-3xl text-orange-700 font-bold",
-              JostFont.className
-            )}
-          >
-            AiForge
+          <h1 className={cn("text-3xl font-bold", JostFont.className)}>
+            AIForge
           </h1>
         </Link>
 
@@ -93,10 +88,10 @@ const Sidebar = ({ apiUsageCount = 0, isPro = false }: SidebarProps) => {
               key={route.href}
               href={route.href}
               className={cn(
-                "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition",
+                "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:bg-blue-200 dark:hover:text-blue-300 dark:hover:bg-sky-800/40 rounded-lg transition",
                 route.href === pathname
-                  ? " text-white bg-white/10"
-                  : "text-zinc-400"
+                  ? " bg-blue-200 dark:text-blue-300 dark:bg-sky-800/40"
+                  : "dark:text-zinc-400 "
               )}
             >
               <div className="flex items-center flex-1">

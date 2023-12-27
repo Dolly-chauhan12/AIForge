@@ -52,7 +52,7 @@ const ProModal = () => {
             {tools.map((tool) => (
               <Card
                 key={tool.label}
-                className="p-3 border-black/5 flex items-center justify-between mb-2"
+                className="p-3 flex items-center justify-between mb-2"
               >
                 <div className="flex items-center gap-x-4">
                   <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>

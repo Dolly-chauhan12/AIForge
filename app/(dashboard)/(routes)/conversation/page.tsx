@@ -87,7 +87,7 @@ const Conversationpage = () => {
             <form
               onSubmit={form.handleSubmit(onSubmit)}
               className="rounded-lg
-            border w-full p-4 px-3 md:px-6
+            border border-blue-400/40 w-full p-4 px-3 md:px-6
             focus-within:shadow-sm
             grid grid-cols-12 gap-2"
             >
@@ -98,7 +98,7 @@ const Conversationpage = () => {
                   <FormItem className="col-span-12 lg:col-span-10">
                     <FormControl className="m-0 p-0">
                       <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                        className="border-0 focus:outline-0 focus-visible:ring-0 focus-visible:ring-transparent focus-within:ring-0  bg-slate-200 dark:bg-gray-900"
                         placeholder="How do I calculate perimeter of a circle ? "
                         disabled={isLoading}
                         {...field}
@@ -109,7 +109,7 @@ const Conversationpage = () => {
                 )}
               />
               <Button
-                className="col-span-12 lg:col-span-2 w-full"
+                className="col-span-12 lg:col-span-2 w-full bg-blue-700/90 hover:bg-blue-300 dark:bg-primary dark:hover:bg-gray-400"
                 size="icon"
                 disabled={isLoading}
                 type="submit"
@@ -135,8 +135,8 @@ const Conversationpage = () => {
                 className={cn(
                   "p-8 w-full flex items-start gap-x-8 rounded-lg",
                   message.role === "user"
-                    ? "bg-white border border-black/5"
-                    : "bg-muted"
+                    ? "bg-white border border-black/5 dark:bg-yellow-400/90 dark:text-black"
+                    : "bg-muted dark:bg-sky-300 dark:text-black"
                 )}
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}

@@ -67,7 +67,7 @@ export default function Dashboard() {
           <Card
             onClick={() => router.push(tool.href)}
             key={tool.href}
-            className="p-4 border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer"
+            className="p-4 border-blue-400 dark:border-gray-300 flex items-center justify-between cursor-pointer hover:scale-105 transition"
           >
             <div className="flex items-center gap-x-4">
               <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>

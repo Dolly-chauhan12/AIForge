@@ -8,10 +8,10 @@ export const LandingHero = () => {
   const { isSignedIn } = useAuth();
 
   return (
-    <div className="text-white font-bold py-36 text-center space-y-4 ">
+    <div className=" font-bold py-36 text-center space-y-4 ">
       <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl space-y-5 font-extrabold">
         <h1>The Best AI Tool for</h1>
-        <div className="text-transparent bg-clip-text bg-gradient-to-l from-blue-800 via-sky-400 to-blue-200 ">
+        <div className="text-transparent bg-clip-text bg-gradient-to-b from-amber-400 via-amber-200 to-slate-100">
           <Typewriter
             options={{
               strings: [
@@ -28,7 +28,7 @@ export const LandingHero = () => {
         </div>
       </div>
 
-      <div className="text-sm md:text-xl font-light text-zinc-400">
+      <div className="text-sm md:text-xl font-light text-zinc-400 dark:text-zinc-200">
         Create content using AI 10x faster
       </div>
       <div>
@@ -41,7 +41,7 @@ export const LandingHero = () => {
           </Button>
         </Link>
       </div>
-      <div className="text-zinc-400 text-xs md:text-sm font-normal">
+      <div className="text-zinc-400 text-xs md:text-sm font-normal dark:text-zinc-200">
         No credit card required.
       </div>
     </div>

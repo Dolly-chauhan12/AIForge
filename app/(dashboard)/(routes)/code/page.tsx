@@ -86,7 +86,7 @@ const Codepage = () => {
             <form
               onSubmit={form.handleSubmit(onSubmit)}
               className="rounded-lg
-            border w-full p-4 px-3 md:px-6
+            border border-blue-400/40 w-full p-4 px-3 md:px-6
             focus-within:shadow-sm
             grid grid-cols-12 gap-2"
             >
@@ -97,7 +97,7 @@ const Codepage = () => {
                   <FormItem className="col-span-12 lg:col-span-10">
                     <FormControl className="m-0 p-0">
                       <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                        className=" border-0 focus:outline-0 focus-visible:ring-0 focus-visible:ring-transparent focus-within:ring-0  bg-slate-200 dark:bg-gray-900"
                         placeholder="Simple button using react-hooks"
                         disabled={isLoading}
                         {...field}
@@ -108,7 +108,7 @@ const Codepage = () => {
                 )}
               />
               <Button
-                className="col-span-12 lg:col-span-2 w-full"
+                className="col-span-12 lg:col-span-2 w-full bg-blue-700/90 hover:bg-blue-300 dark:bg-primary dark:hover:bg-gray-400"
                 size="icon"
                 disabled={isLoading}
                 type="submit"
@@ -119,7 +119,7 @@ const Codepage = () => {
             </form>
           </Form>
         </div>
-        <div className="space-y-4 mt-4">
+        <div className="space-y-4 mt-4 pb-4">
           {isLoading && (
             <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
               <Loader />
@@ -135,20 +135,23 @@ const Codepage = () => {
                 className={cn(
                   "p-8 w-full flex items-start gap-x-8 rounded-lg",
                   message.role === "user"
-                    ? "bg-white border border-black/5"
-                    : "bg-muted"
+                    ? "bg-gray-300 border border-black/5 dark:bg-gray-500 "
+                    : "bg-muted dark:bg-gradient-to-r dark:from-blue-950 dark:to-blue-600 "
                 )}
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
                 <ReactMarkdown
                   components={{
                     pre: ({ node, ...props }) => (
-                      <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
+                      <div className="overflow-auto w-full my-2 bg-black/10 dark:border dark:border-slate-200 p-2 rounded-lg">
                         <pre {...props} />
                       </div>
                     ),
                     code: ({ node, ...props }) => (
-                      <code className="bg-black/10 rounded-lg p-1" {...props} />
+                      <code
+                        className="bg-black/10  rounded-lg p-1 dark:border dark:border-slate-200"
+                        {...props}
+                      />
                     ),
                   }}
                   className="text-sm overflow-hidden leading-7"

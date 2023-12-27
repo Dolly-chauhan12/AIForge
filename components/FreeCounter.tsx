@@ -29,14 +29,14 @@ const FreeCounter = ({
 
   return (
     <div className="px-3">
-      <Card className="bg-white/10 border-0 ">
+      <Card className="dark:bg-sky-800/40 bg-blue-200 dark:border-0 border-2 ">
         <CardContent className="py-6">
-          <div className="text-center text-sm text-white mb-4 space-y-4">
+          <div className="text-center text-sm  mb-4 space-y-4">
             <p>
               {apiUsageCount} / {MAX_FREE_COUNTS} Free Generations
             </p>
             <Progress
-              className="h-3"
+              className="h-5 outline outline-yellow-500 "
               value={(apiUsageCount / MAX_FREE_COUNTS) * 100}
             />
           </div>
