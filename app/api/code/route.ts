@@ -49,7 +49,6 @@ export async function POST(req: Request) {
 
     if (!isPro) {
       await increaseApiUsageCount();
-      console.log("Reached for increasing the request count");
     }
 
     return NextResponse.json(response.choices[0].message);

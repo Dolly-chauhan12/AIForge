@@ -66,8 +66,8 @@ const Conversationpage = () => {
         proModal.onOpen();
       } else {
         toast.error("Something went wrong. Please try again");
+        console.log(error);
       }
-      console.log(error);
     } finally {
       router.refresh();
     }
@@ -135,8 +135,8 @@ const Conversationpage = () => {
                 className={cn(
                   "p-8 w-full flex items-start gap-x-8 rounded-lg",
                   message.role === "user"
-                    ? "bg-white border border-black/5 dark:bg-yellow-400/90 dark:text-black"
-                    : "bg-muted dark:bg-sky-300 dark:text-black"
+                    ? "bg-gray-300 border border-black/5 dark:bg-gray-500 "
+                    : "bg-muted dark:bg-gradient-to-r dark:from-blue-950 dark:to-blue-600"
                 )}
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}

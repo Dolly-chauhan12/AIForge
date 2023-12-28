@@ -36,7 +36,7 @@ const FreeCounter = ({
               {apiUsageCount} / {MAX_FREE_COUNTS} Free Generations
             </p>
             <Progress
-              className="h-5 outline outline-yellow-500 "
+              className="h-4 "
               value={(apiUsageCount / MAX_FREE_COUNTS) * 100}
             />
           </div>

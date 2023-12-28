@@ -19,20 +19,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            disableTransitionOnChange
-          >
+    <html lang="en">
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          disableTransitionOnChange
+        >
+          <ClerkProvider>
             <ToasterProvider />
             <ProModalProvider />
             {children}
-          </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+          </ClerkProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }
