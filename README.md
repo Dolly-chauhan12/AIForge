@@ -4,10 +4,6 @@ Welcome to AIForge, your all-in-one platform for harnessing the capabilities of 
 
 Deployed Site : [AIForge](https://ai-forge-sigma.vercel.app/)
 
-## Description
-
-YouTube Clone is a feature-rich web application that is a clone of the popular video-sharing site, YouTube. With its user-friendly interface and seamless functionality, users can search and watch videos, and see related videos to the currently playing video. The app is built using React, Material UI, and powered by the YouTube API v3 available on RapidAPI hub. It is deployed using Netlify, ensuring a fast and stable user experience.The goal of this project was to learn modern web application development and API integrations.
-
 ## Features
 
 - ### Conversations
